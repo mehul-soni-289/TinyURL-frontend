@@ -164,13 +164,11 @@ const URLShortener = () => {
                                         type="text"
                                         value={customEndpoint}
                                         onChange={(e) => setCustomEndpoint(e.target.value)}
-                                        placeholder="e.g., test123 (3-20 alphanumeric characters)"
+                                        placeholder="e.g., test123, mylink, 12345"
                                         className="input"
-                                        pattern="[a-zA-Z0-9]{3,20}"
-                                        maxLength="20"
                                     />
                                     <p className="text-xs text-slate-500 mt-1">
-                                        💡 Leave empty for auto-generated code, or enter a custom code to test collision detection
+                                        💡 Leave empty for auto-generated code, or enter any custom code to test collision detection
                                     </p>
                                 </div>
 
