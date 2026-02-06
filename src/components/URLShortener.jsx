@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../services/api';
+import config from '../config';
 
 const URLShortener = () => {
     // State management
@@ -105,8 +106,8 @@ const URLShortener = () => {
                         <button
                             onClick={() => setActiveTab('shorten')}
                             className={`px-6 py-2 rounded-lg font-semibold transition-all duration-300 ${activeTab === 'shorten'
-                                    ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg'
-                                    : 'text-slate-400 hover:text-slate-200'
+                                ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg'
+                                : 'text-slate-400 hover:text-slate-200'
                                 }`}
                         >
                             🔗 Shorten URL
@@ -114,8 +115,8 @@ const URLShortener = () => {
                         <button
                             onClick={() => setActiveTab('stats')}
                             className={`px-6 py-2 rounded-lg font-semibold transition-all duration-300 ${activeTab === 'stats'
-                                    ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg'
-                                    : 'text-slate-400 hover:text-slate-200'
+                                ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg'
+                                : 'text-slate-400 hover:text-slate-200'
                                 }`}
                         >
                             📊 Statistics
@@ -123,8 +124,8 @@ const URLShortener = () => {
                         <button
                             onClick={() => setActiveTab('top')}
                             className={`px-6 py-2 rounded-lg font-semibold transition-all duration-300 ${activeTab === 'top'
-                                    ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg'
-                                    : 'text-slate-400 hover:text-slate-200'
+                                ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg'
+                                : 'text-slate-400 hover:text-slate-200'
                                 }`}
                         >
                             🔥 Top URLs
@@ -165,8 +166,8 @@ const URLShortener = () => {
                                             <label
                                                 key={strategy.value}
                                                 className={`cursor-pointer p-4 rounded-lg border-2 transition-all duration-300 ${collisionStrategy === strategy.value
-                                                        ? 'border-indigo-500 bg-indigo-500/10'
-                                                        : 'border-slate-700 bg-slate-800/50 hover:border-slate-600'
+                                                    ? 'border-indigo-500 bg-indigo-500/10'
+                                                    : 'border-slate-700 bg-slate-800/50 hover:border-slate-600'
                                                     }`}
                                             >
                                                 <input
@@ -461,12 +462,12 @@ const URLShortener = () => {
                                             <div className="flex-shrink-0 mr-4">
                                                 <div
                                                     className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl ${index === 0
-                                                            ? 'bg-gradient-to-br from-yellow-400 to-yellow-600 text-yellow-900'
-                                                            : index === 1
-                                                                ? 'bg-gradient-to-br from-gray-300 to-gray-500 text-gray-900'
-                                                                : index === 2
-                                                                    ? 'bg-gradient-to-br from-orange-400 to-orange-600 text-orange-900'
-                                                                    : 'bg-slate-700 text-slate-300'
+                                                        ? 'bg-gradient-to-br from-yellow-400 to-yellow-600 text-yellow-900'
+                                                        : index === 1
+                                                            ? 'bg-gradient-to-br from-gray-300 to-gray-500 text-gray-900'
+                                                            : index === 2
+                                                                ? 'bg-gradient-to-br from-orange-400 to-orange-600 text-orange-900'
+                                                                : 'bg-slate-700 text-slate-300'
                                                         }`}
                                                 >
                                                     #{index + 1}
@@ -477,7 +478,7 @@ const URLShortener = () => {
                                             <div className="flex-1 min-w-0">
                                                 <div className="flex items-center justify-between mb-2">
                                                     <a
-                                                        href={`http://localhost:8000/${urlData.short_code}`}
+                                                        href={`${config.API_BASE_URL}/${urlData.short_code}`}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                         className="text-indigo-400 hover:text-indigo-300 font-mono font-semibold"
@@ -503,7 +504,7 @@ const URLShortener = () => {
 
                                             {/* Copy Button */}
                                             <button
-                                                onClick={() => copyToClipboard(`http://localhost:8000/${urlData.short_code}`)}
+                                                onClick={() => copyToClipboard(`${config.API_BASE_URL}/${urlData.short_code}`)}
                                                 className="ml-4 px-3 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors duration-300 flex-shrink-0"
                                             >
                                                 📋
