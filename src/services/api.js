@@ -8,14 +8,22 @@ export const api = {
    * Shorten a URL
    * @param {string} url - Original URL to shorten
    * @param {string} collisionStrategy - Collision resolution strategy
+   * @param {string} customEndpoint - Optional custom short code
    * @returns {Promise} Response with shortened URL data
    */
-  shortenUrl: async (url, collisionStrategy = 'linear') => {
+  shortenUrl: async (url, collisionStrategy = 'linear', customEndpoint = null) => {
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/shorten`, {
+      const payload = {
         url,
         collision_strategy: collisionStrategy
-      });
+      };
+      
+      // Only include custom_endpoint if provided
+      if (customEndpoint && customEndpoint.trim()) {
+        payload.custom_endpoint = customEndpoint.trim();
+      }
+      
+      const response = await axios.post(`${API_BASE_URL}/api/shorten`, payload);
       return response.data;
     } catch (error) {
       throw error.response?.data?.detail || 'Failed to shorten URL';

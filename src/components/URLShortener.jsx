@@ -6,6 +6,7 @@ const URLShortener = () => {
     // State management
     const [url, setUrl] = useState('');
     const [collisionStrategy, setCollisionStrategy] = useState('linear');
+    const [customEndpoint, setCustomEndpoint] = useState('');
     const [loading, setLoading] = useState(false);
     const [result, setResult] = useState(null);
     const [error, setError] = useState('');
@@ -45,9 +46,10 @@ const URLShortener = () => {
         setLoading(true);
 
         try {
-            const data = await api.shortenUrl(url, collisionStrategy);
+            const data = await api.shortenUrl(url, collisionStrategy, customEndpoint);
             setResult(data);
             setUrl('');
+            setCustomEndpoint('');
 
             // Refresh stats and top URLs
             setTimeout(() => {
@@ -151,6 +153,25 @@ const URLShortener = () => {
                                         className="input"
                                         required
                                     />
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-semibold text-slate-300 mb-2">
+                                        Custom Endpoint (Optional)
+                                        <span className="text-slate-500 font-normal ml-2">- For collision demonstration</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        value={customEndpoint}
+                                        onChange={(e) => setCustomEndpoint(e.target.value)}
+                                        placeholder="e.g., test123 (3-20 alphanumeric characters)"
+                                        className="input"
+                                        pattern="[a-zA-Z0-9]{3,20}"
+                                        maxLength="20"
+                                    />
+                                    <p className="text-xs text-slate-500 mt-1">
+                                        💡 Leave empty for auto-generated code, or enter a custom code to test collision detection
+                                    </p>
                                 </div>
 
                                 <div>
