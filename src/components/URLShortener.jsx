@@ -98,7 +98,7 @@ const URLShortener = () => {
                         URL Shortener with Custom DSA Implementations
                     </p>
                     <p className="text-sm text-slate-500">
-                        Built with Hash Map • LRU Cache • Trie • Min Heap • Base62 • Collision Detection
+                        Built with Hash Map • LRU Cache  • Base62 • Collision Detection
                     </p>
                 </div>
 
