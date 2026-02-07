@@ -381,33 +381,7 @@ const URLShortener = () => {
                             </div>
                         </div>
 
-                        {/* Trie Stats */}
-                        <div className="mb-8">
-                            <h3 className="text-xl font-bold text-yellow-400 mb-4 flex items-center">
-                                <span className="text-2xl mr-2">🌳</span>
-                                Trie Structure
-                            </h3>
-                            <div className="grid-auto-fit">
-                                <StatCard
-                                    title="Total URLs"
-                                    value={stats.trie.total_urls}
-                                    subtitle="Indexed for search"
-                                    color="yellow"
-                                />
-                                <StatCard
-                                    title="Total Nodes"
-                                    value={stats.trie.total_nodes}
-                                    subtitle="Tree nodes created"
-                                    color="amber"
-                                />
-                                <StatCard
-                                    title="Avg Nodes/URL"
-                                    value={stats.trie.avg_nodes_per_url}
-                                    subtitle="Prefix sharing efficiency"
-                                    color="orange"
-                                />
-                            </div>
-                        </div>
+
 
                         {/* Collision Detector Stats */}
                         <div>
